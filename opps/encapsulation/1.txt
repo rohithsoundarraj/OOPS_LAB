@@ -1,0 +1,45 @@
+class Student{
+    private int rollNumber;
+    private String name;
+    private int marks;
+    
+    Student(int r,String name,int marks){
+        this.rollNumber=r;
+        this.name=name;
+        setMarks(marks);
+    }
+    
+    void setMarks(int marks){
+        if (marks>=0 && marks<=100)
+        this.marks=marks;
+        else{
+            System.out.println("Invalid marks;marks setting to 0");
+            this.marks=0;
+        }
+    }
+    
+    int getRollNumber(){
+        return rollNumber;
+    }
+    
+    String getName(){
+        return name;
+    }
+    
+    int getMarks(){
+        return marks;
+    }
+    
+    void displayDetails(){
+        System.out.println(rollNumber);
+        System.out.println(name);
+        System.out.println(this.getMarks());
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Student one=new Student(40,"ROHITH",200);
+        one.displayDetails();
+        
+    }
+}

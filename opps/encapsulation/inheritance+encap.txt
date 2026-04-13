@@ -1,0 +1,100 @@
+class Vehicle{
+    private String vehicleNumber;
+    private String brand;
+    private int rentalPricePerDay;
+    
+    Vehicle(String n,String b,int p){
+        this.vehicleNumber=n;
+        this.brand=b;
+        setPrice(p);
+    }
+    void setPrice(int p){
+        if (p>=0)
+        this.rentalPricePerDay=p;
+        else{
+            System.out.println("Price invalid,price per day setting to zero");
+        }
+    }
+    int getRentalPrice(){
+        return rentalPricePerDay;
+    }
+    void display(){
+        System.out.println("Vehicle Number: "+vehicleNumber);
+        System.out.println("Brand: "+brand);
+        System.out.println("Rental Price Per Day:"+rentalPricePerDay);
+    }
+}
+class Car extends Vehicle{
+    private int numberOfSeats;
+    
+    Car(String n,String b,int p,int s){
+        super(n,b,p);
+        this.numberOfSeats=s;
+    }
+    void display(){
+        super.display();
+        System.out.println("Number of Seats: "+numberOfSeats);
+    }
+}
+class Bike extends Vehicle{
+    private int engineCapacity;
+    
+    Bike(String n,String b,int p,int c){
+        super(n,b,p);
+        this.engineCapacity=c;
+    }
+    
+    void display(){
+        super.display();
+        System.out.println("Engine Capacity: "+engineCapacity);
+    }
+}
+class Truck extends Vehicle{
+    private int loadCapacity;
+    
+    Truck(String n,String b,int p,int l){
+        super(n,b,p);
+        this.loadCapacity=l;
+    }
+    
+    void display(){
+        super.display();
+        System.out.println("Load Capacity: "+loadCapacity);
+    }
+}
+class RentalService{
+    int total;
+    
+    void calculateRent(Vehicle v,int days){
+        total=v.getRentalPrice()*days;
+        
+        if (days>7){
+            total=(int)(total*0.9);
+            System.out.println("Total rent: "+total);
+            System.out.println();
+        }
+        else{
+            System.out.println("Total rent: "+total);
+            System.out.println();
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Car s650=new Car("S650","benz",10000,5);
+        Bike Re=new Bike("gt350","Royal Enfield",1000,650);
+        Truck Al=new Truck("Al23","Ashok Leyland",5000,1000);
+        
+        RentalService re=new RentalService();
+        
+        s650.display();
+        re.calculateRent(s650,10);
+        
+        Re.display();
+        re.calculateRent(Re,2);
+        
+        Al.display();
+        re.calculateRent(Al,8);
+        
+    }
+}

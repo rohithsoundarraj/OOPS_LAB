@@ -1,0 +1,40 @@
+class Employee{
+    private int empId;
+    private String name;
+    private int salary;
+    
+    Employee(int id,String name,int salary){
+        this.empId=id;
+        this.name=name;
+        setSalary(salary);
+    }
+    
+    void setSalary(int salary){
+        if (salary>0 && salary<1000000){
+            this.salary=salary;
+        }
+        else{
+            System.out.println("Invalid salary;salary setting to zero");
+            this.salary=0;
+        }
+    }
+    int empId(){
+        return empId;
+    }
+    String name(){
+        return name;
+    }
+    int salary(){
+        return salary;
+    }
+    
+}
+class Main {
+    public static void main(String[] args) {
+        Employee one=new Employee(2321,"ROD",10000);
+        System.out.println(one.empId());
+        System.out.println(one.name());
+        System.out.println(one.salary());
+        
+    }
+}
